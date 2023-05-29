@@ -3,29 +3,34 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:student/model/db_model.dart';
 
-class StudentView extends StatefulWidget {
-  final List<StudentModel> obj;
-  final int index;
-  StudentView({Key? key, required this.obj, required this.index})
+class StudentView extends StatelessWidget {
+  final String name;
+  final String age;
+  final String location;
+  final String qualification;
+  final String? imagePath;
+
+  StudentView(
+      {Key? key,
+      required this.name,
+      required this.age,
+      required this.location,
+      required this.qualification,
+      required this.imagePath})
       : super(key: key);
 
-  @override
-  State<StudentView> createState() => _StudentViewState();
-}
-
-class _StudentViewState extends State<StudentView> {
   final box = Hive.box<StudentModel>('student');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(179, 39, 37, 37),
+      backgroundColor: const Color.fromARGB(179, 39, 37, 37),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 77, 139, 136),
+        backgroundColor: const Color.fromARGB(255, 77, 139, 136),
         toolbarHeight: 100,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(48.0))),
-        title: Text('Student Details'),
+        title: const Text('Student Details'),
         centerTitle: true,
         elevation: 10,
       ),
@@ -37,12 +42,12 @@ class _StudentViewState extends State<StudentView> {
             children: [
               CircleAvatar(
                   radius: 100,
-                  backgroundColor: Color.fromARGB(255, 233, 235, 233),
-                  child: widget.obj[widget.index].imagepath == null
+                  backgroundColor: const Color.fromARGB(255, 233, 235, 233),
+                  child: imagePath == null
                       ? null
                       : ClipOval(
                           child: Image.file(
-                            File(widget.obj[widget.index].imagepath),
+                            File(imagePath!),
                             width: 180,
                             height: 180,
                             fit: BoxFit.cover,
@@ -50,7 +55,7 @@ class _StudentViewState extends State<StudentView> {
                         )),
               const SizedBox(height: 10),
               Text(
-                'Name : ${widget.obj[widget.index].name}',
+                'Name : $name',
                 style: const TextStyle(
                     color: Color.fromARGB(255, 17, 191, 221), fontSize: 35),
               ),
@@ -58,7 +63,7 @@ class _StudentViewState extends State<StudentView> {
                 height: 10,
               ),
               Text(
-                'Place : ${widget.obj[widget.index].location}',
+                'Place : $location',
                 style: const TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255), fontSize: 25),
               ),
@@ -66,7 +71,7 @@ class _StudentViewState extends State<StudentView> {
                 height: 10,
               ),
               Text(
-                ('Age : ${widget.obj[widget.index].age}'),
+                ('Age : $age'),
                 style: const TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255), fontSize: 25),
               ),
@@ -74,7 +79,7 @@ class _StudentViewState extends State<StudentView> {
                 height: 10,
               ),
               Text(
-                ('Qualification : ${widget.obj[widget.index].qualificcation}'),
+                ('Qualification : $qualification'),
                 style: const TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255), fontSize: 20),
               ),

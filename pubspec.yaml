@@ -40,9 +40,10 @@ dependencies:
   hive_flutter: ^1.1.0
   hive_generator: ^2.0.0
   path_provider: ^2.0.11
-  gallery: ^0.0.1
+  galleryimage: ^1.2.0
   image_picker: ^0.8.5+3
   google_fonts: ^3.0.1
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

@@ -1,29 +1,28 @@
-import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import '../model/db_model.dart';
 
-ValueNotifier<List<StudentModel>> studentListNotifier = ValueNotifier([]);
-Future<void> addstudent(StudentModel value) async {
+// List<StudentModel> students = [];
+// Future<void> addstudent(StudentModel value) async {
+//   final studentDB = await Hive.openBox<StudentModel>('student');
+//   final id = await studentDB.add(value);
+//   value.id = id;
+//   students.add(value);
+// }
+
+@override
+Future<List<StudentModel>> getAllData(String query) async {
   final studentDB = await Hive.openBox<StudentModel>('student');
-  final _id = await studentDB.add(value);
-  value.id = _id;
-
-  studentListNotifier.value.add(value);
-  studentListNotifier.notifyListeners();
-}
-
-Future<void> getStudents() async {
-  final studentDB = await Hive.openBox<StudentModel>('student');
-  studentListNotifier.value.clear();
-
-  studentListNotifier.value.addAll(studentDB.values);
-
-  studentListNotifier.notifyListeners();
+  List<StudentModel> students = [];
+  students.addAll(studentDB.values
+      .where((element) =>
+          element.name.toLowerCase().contains(query.toLowerCase().trim()))
+      .toList());
+  return students;
 }
 
 Future<void> deleteStudent(id) async {
   final studentDB = await Hive.openBox<StudentModel>('student');
   await studentDB.delete(id);
 
-  getStudents();
+  // getStudents();
 }
