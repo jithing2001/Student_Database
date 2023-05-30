@@ -8,7 +8,6 @@ import 'package:student/functions/db_functions.dart';
 import 'dart:core';
 import 'add_students.dart';
 
-// SearchScreenController sc = SearchScreenController();
 SearchScreenController sc = Get.put(SearchScreenController());
 
 class HomePage extends StatelessWidget {

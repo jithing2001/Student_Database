@@ -28,8 +28,4 @@ class StudentModel extends HiveObject {
       required this.qualificcation,
       this.id,
       this.imagepath});
-  // @override
-  // Future<void> delete() {
-  //   return super.delete();
-  // }
 }

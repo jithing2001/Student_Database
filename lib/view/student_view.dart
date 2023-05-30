@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:student/model/db_model.dart';
+
 
 class StudentView extends StatelessWidget {
   final String name;
@@ -18,8 +17,6 @@ class StudentView extends StatelessWidget {
       required this.qualification,
       required this.imagePath})
       : super(key: key);
-
-  // final box = Hive.box<StudentModel>('student');
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,6 @@ class StudentView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 70),
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
                   radius: 100,

@@ -7,16 +7,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:student/controllers/addstudentcontroller.dart';
 
 class AddStudent extends StatelessWidget {
-  // AddStudentController ad = Get.put(AddStudentController());
   AddStudentController ad = AddStudentController();
 
   @override
   Widget build(BuildContext context) {
-    // ad.nameControler.clear();
-    // ad.ageController.clear();
-    // ad.qulificationController.clear();
-    // ad.locationController.clear();
-    // ad.imagepath = null;
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 19, 18, 18),
       appBar: AppBar(
