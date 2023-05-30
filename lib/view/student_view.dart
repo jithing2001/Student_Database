@@ -19,7 +19,7 @@ class StudentView extends StatelessWidget {
       required this.imagePath})
       : super(key: key);
 
-  final box = Hive.box<StudentModel>('student');
+  // final box = Hive.box<StudentModel>('student');
 
   @override
   Widget build(BuildContext context) {

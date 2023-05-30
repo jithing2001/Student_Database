@@ -21,7 +21,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // sc.search('');
     sc.getAllStudentsDetails();
     return Scaffold(
         backgroundColor: const Color.fromARGB(202, 27, 26, 26),
